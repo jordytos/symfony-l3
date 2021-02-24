@@ -1,0 +1,47 @@
+{% extends 'espace-agent/layout.html.twig' %}
+
+{% block title %}Souscriptions{% endblock %}
+
+{% block body %}
+    <div class="section layout_padding padding_top_0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                            <h2><span class="theme_color"></span>Souscriptions</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Etat</th>
+                <th>Utilisateurs</th>
+                <th>Offres</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for souscription in souscriptions %}
+            <tr>
+                <td>{{ souscription.id }}</td>
+                <td>{{ souscription.etat }}</td>
+                <td>{{ souscription.relationUserSouscrip.userName }}</td>
+                <td>{{ souscription.relation.titre }}</td>
+                <td>
+                    <a href="{{ path('souscription_edit', {'id': souscription.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

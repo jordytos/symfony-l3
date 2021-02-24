@@ -1,0 +1,42 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Page d'accueil - Admin{% endblock %}
+
+{% block body %}
+    
+    {% for homepage in homepages %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Body</th>
+                    <th>TitleAbout</th>
+                    <th>TextAbout</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                <tr>
+                    <td>{{ homepage.title }}</td>
+                    <td>{{ homepage.body }}</td>
+                    <td>{{ homepage.titleAbout }}</td>
+                    <td>{{ homepage.textAbout }}</td>
+                    <td>
+                        <a href="{{ path('homepage_show', {'id': homepage.id}) }}">Afficher</a>
+                        <a href="{{ path('homepage_edit', {'id': homepage.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            
+            
+            </tbody>
+        </table>
+        
+        {% else %}
+            <p>No records found </p>
+            <a href="{{ path('homepage_new') }}">Nouveau Sujet</a>
+
+    {% endfor %}
+        
+
+{% endblock %}

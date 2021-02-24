@@ -1,0 +1,58 @@
+{% extends 'public/layout.html.twig' %}
+
+{% block title %}Offer{% endblock %}
+
+{% block body %}
+
+    <div class="section layout_padding padding_top_0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                            <h2><span class="theme_color"></span>Offres</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offer.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ offer.titre }}</td>
+            </tr>
+            <tr>
+                <th>Texte Intro</th>
+                <td>{{ offer.texteIntro }}</td>
+            </tr>
+            <tr>
+                <th>Texte Offre</th>
+                <td>{{ offer.texteOffre }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ offer.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('offer_index') }}">Retour</a>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        
+            <a href="{{ path('offer_edit', {'id': offer.id}) }}">edit</a>    
+
+            {{ include('offer/_delete_form.html.twig') }}
+        
+    {% endif %}
+    <br>
+
+    <a class='btn btn-primary' href="{{ path('subscribe_to_offer', {'id': offer.id}) }}">Souscrire</a>
+
+
+{% endblock %}

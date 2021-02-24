@@ -1,0 +1,13 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Edit Contact{% endblock %}
+
+{% block body %}
+    <h1>Voulez vous vraiment supprimer ce contact {{ contact.email }} </h1>
+    <h1> Message : {{ contact.message }} </h1>
+
+    {{ include('contact/_delete_form.html.twig') }}
+    <a href="{{ path('contact_index') }}">Annuler</a>
+
+    
+{% endblock %}

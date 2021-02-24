@@ -1,0 +1,13 @@
+{% extends 'espace-client/layout.html.twig' %}
+
+{% block title %}Modifier compte{% endblock %}
+
+{% block body %}
+    <h1>Modifier l'utilisateur {{ user.email }}</h1>
+
+    {{ include('user/_form.html.twig', {'button_label': 'Valider'}) }}
+
+    <a href="{{ path('user_compte', {'id': app.user.id}) }}">Retour</a>
+
+
+{% endblock %}

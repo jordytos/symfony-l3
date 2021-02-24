@@ -1,0 +1,32 @@
+{% extends 'public/layout.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <div class="heading_main text_align_center">
+        <h2><span class="theme_color"></span>Inscription</h2>
+    </div>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.nom, { label: 'Nom*' }) }}
+        {{ form_row(registrationForm.prenom, { label: 'Prénom*' }) }}
+        {{ form_row(registrationForm.civilite, { label: 'Civilité*' }) }}
+        {{ form_row(registrationForm.datenaissance, { label: 'Date de naissance*' }) }}
+        {{ form_row(registrationForm.email, { label: 'Email*' }) }}
+        {{ form_row(registrationForm.plainPassword, { label: 'Mot de passe*' }) }}
+        {{ form_row(registrationForm.telephone, { label: 'Numéro portable' }) }}
+        {{ form_row(registrationForm.ville, { label: 'Ville' }) }}
+        {{ form_row(registrationForm.codepostal, { label: 'Code Postal' }) }}
+        {{ form_row(registrationForm.pays, { label: 'Pays' }) }}
+        {{ form_row(registrationForm.numsecu, { label: 'Numéro de sécu' }) }}
+        {{ form_row(registrationForm.agreeTerms) }}<p>* Champ obligatoire</p>
+
+        <button type="submit" class="btn btn-lg btn-primary">Confirmer</button>
+    {{ form_end(registrationForm) }}
+
+    
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Admin Offer {% endblock %}
+
+{% block body %}
+
+    <div class="section layout_padding padding_top_0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                            <h2><span class="theme_color"></span>Offres</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Texte intro</th>
+                <th>Texte Offre</th>
+                <th>Prix</th>
+                <th>Nombre d'abonnés</th>
+                <th>Actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for offer in offers|sort((a,b) => b.relationSouscripOffer|length <=> a.relationSouscripOffer|length) %}
+            <tr>
+                <td>{{ offer.id }}</td>
+                <td>{{ offer.titre }}</td>
+                <td>{{ offer.texteIntro }}</td>
+                <td>{{ offer.texteOffre }}</td>                
+                <td>{{ offer.prix }} €</td>
+                <td>{{ offer.relationSouscripOffer|length }}</td>
+                <td>
+                    <a href="{{ path('offer_show', {'id': offer.id}) }}">voir</a>
+                    <a href="{{ path('offer_edit', {'id': offer.id}) }}">Modifier</a>
+                </td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <p class="text-monospace" >* Le tableau est classé par ordre décroissant d'abonné </p>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <center><a class="btn btn-primary" href="{{ path('offer_new') }}">Ajouter offre</a></center>
+    {% endif %}
+
+    
+{% endblock %}

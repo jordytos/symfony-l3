@@ -1,0 +1,19 @@
+{% extends 'espace-agent/layout.html.twig' %}
+
+{% block title %}Bienvenue cher Agent!{% endblock %}
+
+{% block body %}
+
+
+    
+    <div class="example-wrapper">
+        <h1>Bienvenue dans l'espace agent</h1><br>
+
+       {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <p>Vous êtes connecté en tant que : <span class="font-weight-bold">{{ app.user.email }}</span></p>
+        {% endif %}   
+    </div>
+
+
+
+{% endblock %}

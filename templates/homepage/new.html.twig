@@ -1,0 +1,11 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}New Homepage{% endblock %}
+
+{% block body %}
+    <h1>Create new Homepage</h1>
+
+    {{ include('homepage/_form.html.twig') }}
+
+    <a href="{{ path('homepage_index') }}">retour</a>
+{% endblock %}

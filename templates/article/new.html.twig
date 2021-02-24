@@ -1,0 +1,17 @@
+{% extends 'admin/layout.html.twig' %}
+ 
+
+{% block title %}Nouvel Article{% endblock %}
+
+{% block body %}
+
+    <h1>Ajouter un nouvel Article</h1>
+
+
+    {{ include('article/_form.html.twig') }}<br>
+
+    <a href="{{ path('article_index') }}">Retour</a>
+
+   
+
+{% endblock %}

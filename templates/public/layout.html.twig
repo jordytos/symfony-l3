@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue!{% endblock %}
+
+{% block layout %}
+
+    <div class="section first">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <!-- section -->
+    <div class="section layout_padding">
+        <div class="container-fluid">            
+        </div>
+    </div>
+    <!-- end section -->
+
+
+
+
+    
+
+
+{% endblock %}

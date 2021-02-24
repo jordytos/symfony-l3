@@ -1,0 +1,13 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Edit Homepage{% endblock %}
+
+{% block body %}
+    <h1>Edit Homepage</h1>
+
+    {{ include('homepage/_form.html.twig', {'button_label': 'Valider'}) }}<br>
+
+    {{ include('homepage/_delete_form.html.twig') }}<br>
+
+    <a href="{{ path('homepage_index') }}">Annuler</a>
+{% endblock %}

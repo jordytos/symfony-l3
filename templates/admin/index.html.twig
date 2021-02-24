@@ -1,0 +1,19 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Bonjour cher Admin !{% endblock %}
+
+{% block body %}
+
+
+    
+    <div class="example-wrapper">
+        <h1>Bienvenue dans l'espace d'administration</h1><br>
+
+       {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <p>Vous êtes connecté en tant que : <span class="font-weight-bold">{{ app.user.email }}</span></p>
+        {% endif %}   
+    </div>
+
+
+
+{% endblock %}

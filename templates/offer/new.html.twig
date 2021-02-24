@@ -1,0 +1,11 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Nouvel Offre{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une Offre</h1>
+
+    {{ include('offer/_form.html.twig') }}<br>
+
+    <a href="{{ path('offer_index') }}">retour</a>
+{% endblock %}

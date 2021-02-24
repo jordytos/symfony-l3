@@ -1,0 +1,60 @@
+{% extends 'public/layout.html.twig' %}
+
+{% block title %}Offre - {{ offer.titre}} {% endblock %}
+
+{% block body %}
+
+    <div class="section layout_padding padding_top_0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                            <h2><span class="theme_color"></span>Offres</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    
+        <h1> Titre : {{ offer.titre }} </h1>
+        <img class="img-responsive" src="{{ asset('uploads/images/'~ offer.image) }}" alt="#" width="350" height="280" />
+        <p> Texte Intro : {{ offer.texteintro}} </p>
+        <p> Description : {{ offer.texteoffre }} </p>
+        <p> Prix : <i>{{ offer.prix }} €</i></p>   
+
+        <a href="{{ path('offer_index') }}">Retour</a>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            
+                <a href="{{ path('offer_edit', {'id': offer.id}) }}">Modifier</a>    
+
+                {{ include('offer/_delete_form.html.twig') }}
+            
+        {% endif %}
+        <br>
+
+        <a class='btn btn-primary' href="{{ path('subscribe_to_offer', {'id': offer.id}) }}">Souscrire</a>
+    
+
+
+    <div class="row">
+        {% for other_offer in offers %}
+            {% if other_offer.id is not same as(offer.id) %}
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="full news_blog">
+                            <img class="img-responsive" src="{{ asset('uploads/images/'~ other_offer.image) }}" alt="#" width="350" height="280" />
+                            <div class="overlay">><a class="main_bt transparent" href="{{ path('offer_show', { 'id' : other_offer.id }) }}">Voir</a></div>
+                            <div class="container-fluid blog_details">
+                                <h3>{{ other_offer.titre }}</h3>
+                                <p> {{other_offer.prix}} €</p>
+                                <p> {{other_offer.relationSouscripOffer|length}} abonnés </p>
+                            </div>
+                        </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}
